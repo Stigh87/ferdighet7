@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<style>
+    p{
+        background-color: lightblue;
+        border: solid black;
+    }
+
+</style>
+
+<body>
+    <h2>Ferdighet 7 - Sette variabel til resultat av et regnestykke. </h2>
+    <input id="tallA" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+    <input id="tallB" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
+    <div id="resultat"></div>
+    
+
+
+    <p>Oppgave <br>
+        Lag en slider for å velge bredde fra 1 til 1000 og en slider for å velge høyde fra 1 til 1000. <br>
+        Vis en div med valgt bredde og høyde - og legg inn tekst i diven som viser arealet (bredde*høyde) og omkretsen (2*bredde+2*høyde).</p>
+    
+    <hr>
+    <br>
+    <input id="Xakse" type="range" min="1" max="1000" step="1" oninput="regnut()" value="1" />
+    <div id="Xvalue">1</div>
+    <br>
+    <input id="Yakse" type="range" min="1" max="1000" step="1" oninput="regnut()" value="1" />
+    <div id="Yvalue">1</div>
+    <br>
+
+
+    </br>
+    
+    <div id="Omkrets">Omkrets:</div>
+    <div id="Areal">Areal:</div>
+    <br>
+    <div id="rektangel">rektangel</div>
+    <div id="rektangelHtml">tekst</div>
+
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var tallAInput = document.getElementById('tallA');
+        var tallBInput = document.getElementById('tallB');
+        
+        calculate();
+       
+        function calculate() {
+            var tallA = parseInt(tallAInput.value);
+            var tallB = parseInt(tallBInput.value);
+            var sum = tallA + tallB;
+            var differense = tallA - tallB;
+            var produkt = tallA * tallB;
+            var kvotient = tallA / tallB;
+            resultatDiv.innerHTML = '' +
+                tallA + '+' + tallB + '=' + sum + '<br/>' +
+                tallA + '-' + tallB + '=' + differense + '<br/>' +
+                tallA + '*' + tallB + '=' + produkt + '<br/>' +
+                tallA + '/' + tallB + '=' + kvotient;
+        }
+
+
+        // regnut();
+
+            var XakseInput = document.getElementById('Xakse')
+            var YakseInput = document.getElementById('Yakse')
+
+            var rektangelDiv = document.getElementById('rektangel');
+            var rektangelHtmlDiv = document.getElementById('rektangelHtml');
+
+            var Xvalue = document.getElementById('Xvalue');
+            var Yvalue = document.getElementById('Yvalue');
+            var XX = '';
+            var YY = '';
+            var OmkretsDiv = document.getElementById('Omkrets');
+            var ArealDiv = document.getElementById('Areal');
+            var Areal = '';
+            var Omkrets = '';
+
+        function regnut(){
+            XX = parseInt(Xakse.value);
+            Xvalue.innerHTML = XX;
+            YY = parseInt(Yakse.value);
+            Yvalue.innerHTML = YY;
+            var Omkrets = (XX * 2) + (YY * 2);
+            var Areal = XX * YY;
+            ArealDiv.innerHTML = Areal;
+            OmkretsDiv.innerHTML = Omkrets;
+
+            rektangelDiv.innerHTML = '<div style="'
+                + 'border: ' + 'solid' + ' black' + ';'
+                + 'background-color: ' + 'yellow' + ';'
+                + 'width: ' + XX + 'px;'
+                + 'height: ' + YY + 'px;'
+                + '">' + '</div>';
+            rektangelHtmlDiv.innerText = rektangelDiv.innerHTML;
+
+        }
+
+        
+
+
+    </script>
+
+
+<!-- parseInt "tvinger" en variabel til å se på den som tall, i mattematisk betydning. -->
+<!-- Uten den vil den se på tall som symboler/teksk -->
+
+</body>
+</html>
